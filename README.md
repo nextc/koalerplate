@@ -2,6 +2,7 @@
 
 ### Extra in the package:
 * custom middleware `body-logger` to log request body in dev mode
+* compress to compression
 
 ---
 # Original Readme

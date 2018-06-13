@@ -6,6 +6,7 @@ const Helmet = require('koa-helmet')
 const Logger = require('koa-logger')
 const Respond = require('koa-respond')
 const BodyLogger = require('./middlewares/body-logger')
+const Compress = require('koa-compress')
 const app = new Koa()
 const router = new Router()
 
@@ -27,6 +28,7 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 app.use(Respond())
+app.use(Compress())
 
 // API routes
 require('./routes')(router)
