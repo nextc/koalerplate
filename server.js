@@ -1,19 +1,15 @@
 const Koa = require('koa')
 const Router = require('koa-router')
-const Logger = require('koa-logger')
 const Cors = require('@koa/cors')
 const BodyParser = require('koa-bodyparser')
 const Helmet = require('koa-helmet')
-const respond = require('koa-respond')
-
+const Logger = require('koa-logger')
+const Respond = require('koa-respond')
+const BodyLogger = require('./middlewares/body-logger')
 const app = new Koa()
 const router = new Router()
 
 app.use(Helmet())
-
-if (process.env.NODE_ENV === 'development') {
-  app.use(Logger())
-}
 
 app.use(Cors())
 app.use(BodyParser({
@@ -25,7 +21,12 @@ app.use(BodyParser({
   }
 }))
 
-app.use(respond())
+if (process.env.NODE_ENV === 'development') {
+  app.use(Logger())
+  app.use(BodyLogger())
+}
+
+app.use(Respond())
 
 // API routes
 require('./routes')(router)
