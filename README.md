@@ -1,3 +1,10 @@
+# This is a fork from https://github.com/dbalas/koalerplate with additional changes for Mingle aka. NextC
+
+## Extra in the package:
+* custom middleware `body-logger` to log request body in dev mode
+
+---
+# Original Readme
 # Koalerplate
 
 A simple Koa 2 boilerplate for API's using ES6.
